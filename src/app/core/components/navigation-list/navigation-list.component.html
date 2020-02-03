@@ -1,0 +1,16 @@
+<mat-nav-list>
+  <a
+    *ngFor="let link of links"
+    mat-list-item
+    (click)="listItemClick.emit()"
+    class="hover:am-text-primary-900"
+    routerLink="{{ link.href }}"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="am-text-primary-900"
+    #rla="routerLinkActive"
+    [ngClass]="{ 'am-text-primary-400': !rla.isActive }"
+  >
+    <mat-icon class="mr-3">{{ link.icon }}</mat-icon>
+    <span> {{ link.text }}</span>
+  </a>
+</mat-nav-list>

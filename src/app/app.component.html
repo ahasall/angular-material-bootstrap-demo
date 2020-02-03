@@ -1,5 +1,4 @@
-<button mat-raised-button color="primary">Primary</button>
-<button mat-raised-button color="accent">Accent</button>
-<button mat-raised-button color="warn">Warn</button>
-
-<router-outlet></router-outlet>
+<app-header (toggle)="sidenav.toggle()"></app-header>
+<app-navigation-drawer class="flex-grow-1 overflow-auto" #sidenav>
+  <router-outlet></router-outlet>
+</app-navigation-drawer>
