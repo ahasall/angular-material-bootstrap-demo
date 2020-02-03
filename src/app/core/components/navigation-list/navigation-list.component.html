@@ -8,7 +8,7 @@
     [routerLinkActiveOptions]="{ exact: true }"
     routerLinkActive="am-text-primary-900"
     #rla="routerLinkActive"
-    [ngClass]="{ 'am-text-primary-400': !rla.isActive }"
+    [ngClass]="{ 'am-text-neutral-800': !rla.isActive }"
   >
     <mat-icon class="mr-3">{{ link.icon }}</mat-icon>
     <span> {{ link.text }}</span>

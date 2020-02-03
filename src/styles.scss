@@ -34,4 +34,5 @@ $typography: mat-typography-config(
 
 @include mat-core($typography);
 @include angular-material-theme($indigo-pink-theme);
-@include generate-color-utilities($indigo-pink-theme);
+@include generate-color-utilities-from-theme($indigo-pink-theme);
+@include generate-color-utilities-from-palette(neutral, mat-palette($mat-gray));

@@ -2,23 +2,27 @@ $prefix: 'am-';
 
 @mixin _generate_utility_for_prop($type, $abbrev, $prop, $palette, $variant) {
   .#{$prefix}#{$abbrev}-#{$type}-#{$variant},
-  .hover\:#{$prefix}#{$abbrev}-#{$type}-#{$variant}:hover,
-  {
+  .hover\:#{$prefix}#{$abbrev}-#{$type}-#{$variant}:hover {
     #{$prop}: mat-color($palette, $variant) !important;
   }
 }
 
-@mixin generate-color-utilities($theme) {
+
+@mixin generate-color-utilities-from-palette($type, $palette) {
+  @for $i from 1 through 9 {
+    $variant: 100 * $i;
+    @include _generate_utility_for_prop($type, text, color, $palette, $variant);
+    @include _generate_utility_for_prop($type, bg, background-color, $palette, $variant);
+    @include _generate_utility_for_prop($type, on, color, map_get($palette, contrast), $variant);
+  }
+}
+
+@mixin generate-color-utilities-from-theme($theme) {
   $primary-palette: map-get($theme, primary);
   $accent-palette: map-get($theme, accent);
   $warn-palette: map-get($theme, warn);
 
   @each $type, $palette in (primary: $primary-palette, accent: $accent-palette, warn: $warn-palette) {
-    @for $i from 1 through 9 {
-      $variant: 100 * $i;
-      @include _generate_utility_for_prop($type, text, color, $palette, $variant);
-      @include _generate_utility_for_prop($type, bg, background-color, $palette, $variant);
-      @include _generate_utility_for_prop($type, on, color, map_get($palette, contrast), $variant);
-    }
+    @include generate-color-utilities-from-palette($type, $palette);
   }
 }
