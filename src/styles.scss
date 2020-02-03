@@ -7,12 +7,13 @@
 @import '~bootstrap/scss/utilities';
 
 @import '~@angular/material/theming';
+@import 'scss/theming';
 
 $primary-palette: mat-palette($mat-indigo);
 $accent-palette: mat-palette($mat-pink);
 $warn-palette: mat-palette($mat-red);
 
-$theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
+$indigo-pink-theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
 
 $typography: mat-typography-config(
   $font-family: $font-family-base,
@@ -32,4 +33,5 @@ $typography: mat-typography-config(
 );
 
 @include mat-core($typography);
-@include angular-material-theme($theme);
+@include angular-material-theme($indigo-pink-theme);
+@include generate-color-utilities($indigo-pink-theme);
