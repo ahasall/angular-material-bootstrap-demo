@@ -15,9 +15,14 @@ export class NavigationListComponent {
       text: 'Home'
     },
     {
+      href: '/theming',
+      icon: 'format_color_fill',
+      text: 'Theming'
+    },
+    {
       href: '/about',
       icon: 'info',
-      text: 'About  '
+      text: 'About'
     }
   ];
 }
